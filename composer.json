@@ -1,0 +1,22 @@
+{
+  "name":         "kambizzandi/php-framework",
+  "description":  "A light weight php framework",
+  "homepage":     "https://github.com/kambizzandi/php-framework",
+  "keywords":     ["php framework", "php", "framework"],
+  "license":      "MIT",
+  "authors": [
+    {
+      "name": "kambizzandi",
+      "email": "kambizzandi@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.2",
+    "symfony/mailer": "^5.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "kambizzandi\\php-framework\\": "src"
+    }
+  }
+}
