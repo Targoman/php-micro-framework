@@ -1,7 +1,7 @@
 {
-  "name":         "kambizzandi/php-framework",
+  "name":         "targoman/php-micro-framework",
   "description":  "A light weight php framework",
-  "homepage":     "https://github.com/kambizzandi/php-framework",
+  "homepage":     "https://github.com/targoman/php-micro-framework",
   "keywords":     ["php framework", "php", "framework"],
   "license":      "MIT",
   "authors": [
@@ -16,7 +16,7 @@
   },
   "autoload": {
     "psr-4": {
-      "kambizzandi\\php-framework\\": "src"
+      "targoman\\php-micro-framework\\": "src"
     }
   }
 }
