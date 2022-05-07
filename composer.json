@@ -1,0 +1,22 @@
+{
+  "name":         "targoman/php-micro-framework",
+  "description":  "A light weight php framework",
+  "homepage":     "https://github.com/targoman/php-micro-framework",
+  "keywords":     ["php framework", "php", "framework"],
+  "license":      "MIT",
+  "authors": [
+    {
+      "name": "kambizzandi",
+      "email": "kambizzandi@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.2",
+    "symfony/mailer": "^5.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "targoman\\php-micro-framework\\": "src"
+    }
+  }
+}
