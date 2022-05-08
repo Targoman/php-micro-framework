@@ -69,6 +69,8 @@ class Command {
         $this->pdoStatement->execute();
         $result = $this->pdoStatement->rowCount();
 
+        // $this->pdoStatement->closeCursor();
+
         return $result;
     }
 

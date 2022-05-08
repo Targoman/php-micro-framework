@@ -6,6 +6,7 @@
 class TargomanFramework {
     public static $baseNamespaces = [];
     public static $autoloadMap = [];
+    public static $app; //fills in Application::__ctor
 
     public static function autoload($_className) {
         if (strpos($_className, "\\") !== false) {
@@ -86,13 +87,14 @@ class TargomanFramework {
 
 spl_autoload_register(["TargomanFramework", "autoload"], true, false);
 TargomanFramework::$autoloadMap = array_replace_recursive(
-    [
-        "Targoman\\Framework" => __DIR__
-    ],
+    // [
+    //     "Targoman\\Framework" => __DIR__
+    // ],
     require(__DIR__ . "/../../../../autoload.php")
 );
 krsort(TargomanFramework::$autoloadMap);
 
+TargomanFramework::$baseNamespaces[] = "Targoman\\Framework";
 foreach (TargomanFramework::$autoloadMap as $k => $v) {
     TargomanFramework::$baseNamespaces[] = explode('\\', $k)[0];
 }
