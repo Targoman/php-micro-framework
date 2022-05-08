@@ -3,9 +3,9 @@
  * @author: Kambiz Zandi <kambizzandi@gmail.com>
  */
 
-namespace Framework\core;
+namespace Targoman\Framework\core;
 
-use Framework;
+use TargomanFramework;
 
 class Application extends Component {
 
@@ -27,7 +27,7 @@ class Application extends Component {
             return static::$components[$name];
 
         if (isset($this->config()["components"][$name]["class"])) {
-            $component = Framework::instantiateClass($this->config()["components"][$name]);
+            $component = TargomanFramework::instantiateClass($this->config()["components"][$name]);
 
             if (is_null($component))
                 throw new \Exception("Could not create $name");

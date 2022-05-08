@@ -3,7 +3,7 @@
  * @author: Kambiz Zandi <kambizzandi@gmail.com>
  */
 
-namespace Framework\db;
+namespace Targoman\Framework\db;
 
 class Command {
     public $db;

@@ -3,7 +3,7 @@
  * @author: Kambiz Zandi <kambizzandi@gmail.com>
  */
 
-namespace Framework\core;
+namespace Targoman\Framework\core;
 
 class Component {
 }

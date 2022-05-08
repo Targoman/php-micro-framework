@@ -3,7 +3,7 @@
  * @author: Kambiz Zandi <kambizzandi@gmail.com>
  */
 
-class Framework {
+class TargomanFramework {
     public static $baseNamespaces = [];
     public static $autoloadMap = [];
 
@@ -84,15 +84,15 @@ class Framework {
 
 }
 
-spl_autoload_register(["Framework", "autoload"], true, false);
-Framework::$autoloadMap = array_replace_recursive(
+spl_autoload_register(["TargomanFramework", "autoload"], true, false);
+TargomanFramework::$autoloadMap = array_replace_recursive(
     [
-        "Framework" => __DIR__
+        "Targoman\\Framework" => __DIR__
     ],
     require(__DIR__ . "/../../../../autoload.php")
 );
-krsort(Framework::$autoloadMap);
+krsort(TargomanFramework::$autoloadMap);
 
-foreach (Framework::$autoloadMap as $k => $v) {
-    Framework::$baseNamespaces[] = explode('\\', $k)[0];
+foreach (TargomanFramework::$autoloadMap as $k => $v) {
+    TargomanFramework::$baseNamespaces[] = explode('\\', $k)[0];
 }
