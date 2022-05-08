@@ -8,6 +8,8 @@ namespace Targoman\Framework\db;
 use PDO;
 
 class MySql {
+    use \Targoman\Framework\core\ComponentTrait;
+
     public $host = "127.0.0.1";
     public $port = "3306";
     public $username;

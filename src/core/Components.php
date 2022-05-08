@@ -6,8 +6,9 @@
 namespace Targoman\Framework\core;
 
 use TargomanFramework;
+use Component;
 
-class Component extends BaseObject {
+class Components extends BaseObject {
     private $components = [];
 
     public function __construct(&$_config) {
@@ -31,7 +32,7 @@ class Component extends BaseObject {
                 $this->components[$name] = $component;
             }
 
-            return $this->components[$name];
+            return $this->components[$name]->getInitialized();
         }
 
         return parent::__get($name);

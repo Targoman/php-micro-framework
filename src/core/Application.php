@@ -7,7 +7,7 @@ namespace Targoman\Framework\core;
 
 use TargomanFramework;
 
-class Application extends Component {
+class Application extends Components {
     // private static $config = null;
 
     public function __construct($_config) {
