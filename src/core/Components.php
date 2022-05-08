@@ -9,6 +9,7 @@ use TargomanFramework;
 use Component;
 
 class Components extends BaseObject {
+
     private $components = [];
 
     public function __construct(&$_config) {
