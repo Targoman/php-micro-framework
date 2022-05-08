@@ -23,10 +23,8 @@ class Component extends BaseObject {
     public function __get($name) {
         if (isset($this->components[$name])) {
             if (is_array($this->components[$name])) {
-                if (empty($this->components[$name]["class"]))
-                    throw new \Exception("Class not defined. Could not create $name");
+                $component = TargomanFramework::instantiateClass($this->components[$name]);
 
-                $component = TargomanFramework::instantiateClass($this->components[$name]["class"]);
                 if (is_null($component))
                     throw new \Exception("Could not create $name");
 
