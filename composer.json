@@ -16,7 +16,7 @@
   },
   "autoload": {
     "psr-4": {
-      "targoman\\php-micro-framework\\": "src"
+      "Targoman\\Framework\\": "src"
     }
   }
 }
