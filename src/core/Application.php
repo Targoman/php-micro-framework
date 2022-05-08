@@ -18,6 +18,7 @@ class Application extends Components {
             foreach ($_config["app"] as $k => $v) {
                 if (property_exists($this, $k) == false)
                     throw new \Exception("unknown class member: " . $k);
+
                 $this->$k = $v;
             }
             unset($_config["app"]);
