@@ -43,11 +43,19 @@ class Command {
         }
     }
 
+    public function checkPDOErrors() {
+        // if ($this->db->getPDO()->errorCode)
+    }
+
     public function queryAll() {
         $this->prepare();
 
         $this->pdoStatement->execute();
+        $this->checkPDOErrors();
+
         $result = $this->pdoStatement->fetchAll();
+        $this->checkPDOErrors();
+
         $this->pdoStatement->closeCursor();
 
         return $result;
@@ -57,7 +65,11 @@ class Command {
         $this->prepare();
 
         $this->pdoStatement->execute();
+        $this->checkPDOErrors();
+
         $result = $this->pdoStatement->fetch();
+        $this->checkPDOErrors();
+
         $this->pdoStatement->closeCursor();
 
         return $result;
@@ -67,7 +79,12 @@ class Command {
         $this->prepare();
 
         $this->pdoStatement->execute();
+        $this->checkPDOErrors();
+
         $result = $this->pdoStatement->rowCount();
+        $this->checkPDOErrors();
+
+        // $this->pdoStatement->closeCursor();
 
         return $result;
     }

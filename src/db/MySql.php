@@ -34,6 +34,7 @@ class MySql {
     public function getPDO() {
         if (self::$PDO == null) {
             self::$PDO = new \PDO($this->getDSN(), $this->username, $this->password);
+            self::$PDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             self::$PDO->exec('SET NAMES "utf8mb4"');
         }
 
