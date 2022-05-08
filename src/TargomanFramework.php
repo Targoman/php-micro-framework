@@ -86,9 +86,9 @@ class TargomanFramework {
 
 spl_autoload_register(["TargomanFramework", "autoload"], true, false);
 TargomanFramework::$autoloadMap = array_replace_recursive(
-    // [
-    //     "Targoman\\Framework" => __DIR__
-    // ],
+    [
+        "Targoman\\Framework" => __DIR__
+    ],
     require(__DIR__ . "/../../../../autoload.php")
 );
 krsort(TargomanFramework::$autoloadMap);
