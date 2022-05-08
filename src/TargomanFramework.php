@@ -6,6 +6,7 @@
 class TargomanFramework {
     public static $baseNamespaces = [];
     public static $autoloadMap = [];
+    public static $app; //fills in Application::__ctor
 
     public static function autoload($_className) {
         if (strpos($_className, "\\") !== false) {
