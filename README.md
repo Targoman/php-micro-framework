@@ -28,7 +28,13 @@ create .gitignore file with this contents:
 composer.lock
 ```
 
-create config folder:
+create app folder:
+```
+mkdir app
+cd app
+```
+
+create config folder under app:
 ```
 mkdir config
 cd config
@@ -78,46 +84,9 @@ return [
 ];
 ```
 
-back to your project root folder
+back to app folder
 ```
 cd ..
-```
-
-create autoload.php with this contents:
-```
-<?php
-return [
-    "myTestApp\\app\\" => __DIR__ . '/app'
-];
-```
-
-create app folder:
-```
-mkdir app
-cd app
-```
-
-create Application.php with this contents:
-```
-namespace myTestApp\app;
-
-use Targoman\Framework\core\Application as BaseApplication;
-
-class Application extends BaseApplication {
-    public $myParamA;
-
-    public function run() {
-        // put your code here
-
-        echo $this->myParamA;
-
-        // use $this->db for accessing db defined in component section of config files
-
-        // $this->db->selectAll(...)
-
-        return 0; //exit code
-    }
-}
 ```
 
 create Runner.php
@@ -136,6 +105,40 @@ $config = array_replace_recursive(
 );
 
 exit((new \myTestApp\app\Application($config))->run());
+```
+
+create Application.php with this contents:
+```
+namespace myTestApp\app;
+
+use Targoman\Framework\core\Application as BaseApplication;
+
+class Application extends BaseApplication {
+    public $myParamA;
+
+    public function run() {
+        echo $this->myParamA;
+
+        // use $this->db for accessing db defined in component section of config files
+
+        // $this->db->selectAll(...);
+
+        return 0; //exit code
+    }
+}
+```
+
+back to your project root folder
+```
+cd ..
+```
+
+create autoload.php with this contents:
+```
+<?php
+return [
+    "myTestApp\\app\\" => __DIR__ . '/app'
+];
 ```
 
 run:
