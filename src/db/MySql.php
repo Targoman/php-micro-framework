@@ -3,11 +3,13 @@
  * @author: Kambiz Zandi <kambizzandi@gmail.com>
  */
 
-namespace Framework\db;
+namespace Targoman\Framework\db;
 
 use PDO;
 
 class MySql {
+    use \Targoman\Framework\core\ComponentTrait;
+
     public $host = "127.0.0.1";
     public $port = "3306";
     public $username;
@@ -32,6 +34,7 @@ class MySql {
     public function getPDO() {
         if (self::$PDO == null) {
             self::$PDO = new \PDO($this->getDSN(), $this->username, $this->password);
+            self::$PDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             self::$PDO->exec('SET NAMES "utf8mb4"');
         }
 

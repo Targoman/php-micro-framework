@@ -3,7 +3,7 @@
  * @author: Kambiz Zandi <kambizzandi@gmail.com>
  */
 
-namespace Framework\db;
+namespace Targoman\Framework\db;
 
 class Command {
     public $db;
@@ -68,6 +68,8 @@ class Command {
 
         $this->pdoStatement->execute();
         $result = $this->pdoStatement->rowCount();
+
+        // $this->pdoStatement->closeCursor();
 
         return $result;
     }

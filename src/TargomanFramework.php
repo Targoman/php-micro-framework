@@ -3,9 +3,10 @@
  * @author: Kambiz Zandi <kambizzandi@gmail.com>
  */
 
-class Framework {
+class TargomanFramework {
     public static $baseNamespaces = [];
     public static $autoloadMap = [];
+    public static $app; //fills in Application::__ctor
 
     public static function autoload($_className) {
         if (strpos($_className, "\\") !== false) {
@@ -84,15 +85,16 @@ class Framework {
 
 }
 
-spl_autoload_register(["Framework", "autoload"], true, false);
-Framework::$autoloadMap = array_replace_recursive(
-    [
-        "Framework" => __DIR__
-    ],
+spl_autoload_register(["TargomanFramework", "autoload"], true, false);
+TargomanFramework::$autoloadMap = array_replace_recursive(
+    // [
+    //     "Targoman\\Framework" => __DIR__
+    // ],
     require(__DIR__ . "/../../../../autoload.php")
 );
-krsort(Framework::$autoloadMap);
+krsort(TargomanFramework::$autoloadMap);
 
-foreach (Framework::$autoloadMap as $k => $v) {
-    Framework::$baseNamespaces[] = explode('\\', $k)[0];
+TargomanFramework::$baseNamespaces[] = "Targoman\\Framework";
+foreach (TargomanFramework::$autoloadMap as $k => $v) {
+    TargomanFramework::$baseNamespaces[] = explode('\\', $k)[0];
 }
