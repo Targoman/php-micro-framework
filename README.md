@@ -1,8 +1,17 @@
 # php-micro-framework
 
-create a folder for your project
+create a folder for your project:
+```
+mkdir testproject
+cd testproject
+```
 
-create composer.json and put this in "require" section:
+run:
+```
+composer init
+```
+
+modify composer.json and put this in "require" section:
 ```
 "targoman/php-micro-framework" : "dev-dev"
 ```
