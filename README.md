@@ -3,25 +3,37 @@
 create a folder for your project
 
 create composer.json and put this in "require" section:
-    "targoman/php-micro-framework" : "dev-dev"
+```
+"targoman/php-micro-framework" : "dev-dev"
+```
 
-run composer update
+run:
+```
+composer update
+```
 
-create .gitignore file
+create .gitignore file with this contents:
 ```
 /vendor/
 *-local.*
 composer.lock
 ```
 
-create folder app under root and cd to it
+create app folder under root and cd to it:
+```
+mkdir app
+cd app
+```
 
-create Application.php
+create Application.php with this contents:
 ```
 namespace myTestApp\app;
+
 use Targoman\Framework\core\Application as BaseApplication;
+
 class Application extends BaseApplication {
     public function run() {
+        // put your code here
     }
 }
 ```
@@ -44,9 +56,14 @@ $config = array_replace_recursive(
 exit((new \myTestApp\app\Application($config))->run());
 ```
 
-create folder config under root and cd to it
+create config folder under root and cd to it:
+```
+cd ..
+mkdir config
+cd config
+```
 
-create App.conf.php
+create App.conf.php with this contents:
 ```
 <?php
 return [
@@ -60,15 +77,7 @@ return [
 ];
 ```
 
-create App.conf.php
-```
-return [
-    "app" => [
-    ],
-];
-```
-
-create params.php
+create params.php with this contents:
 ```
 <?php
 return [
@@ -77,7 +86,7 @@ return [
 ];
 ```
 
-create params-local.php
+create params-local.php with this contents:
 ```
 <?php
 return [
@@ -87,8 +96,11 @@ return [
 ```
 
 back to your project root folder
+```
+cd ..
+```
 
-create autoload.php
+create autoload.php with this contents:
 ```
 <?php
 return [
