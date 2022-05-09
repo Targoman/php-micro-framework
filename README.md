@@ -28,52 +28,8 @@ create .gitignore file with this contents:
 composer.lock
 ```
 
-create app folder:
-```
-mkdir app
-cd app
-```
-
-create Application.php with this contents:
-```
-namespace myTestApp\app;
-
-use Targoman\Framework\core\Application as BaseApplication;
-
-class Application extends BaseApplication {
-    public $myParamA;
-
-    public function run() {
-        // put your code here
-
-        echo $this->myParamA;
-
-        return 0; //exit code
-    }
-}
-```
-
-create Runner.php
-```
-<?php
-defined('FW_DEBUG') or define('FW_DEBUG', true);
-defined('FW_ENV_DEV') or define('FW_ENV_DEV', true);
-
-require(__DIR__ . "/../vendor/autoload.php");
-require(__DIR__ . "/../vendor/targoman/php-micro-framework/src/TargomanFramework.php");
-
-$config = array_replace_recursive(
-    require(__DIR__ . "/config/App.conf.php"),
-    require(__DIR__ . "/config/params.php"),
-    @require(__DIR__ . "/config/params-local.php")
-);
-
-exit((new \myTestApp\app\Application($config))->run());
-```
-
 create config folder:
 ```
-cd ..
 mkdir config
 cd config
 ```
@@ -110,6 +66,15 @@ return [
     "app" => [
         "myParamA" => "override original value for my local use value",
     ],
+    "components" => [
+        "db" => [
+            "host" => "127.0.0.1",
+            "port" => "3306",
+            "username" => "user name",
+            "password" => "password for user",
+            "schema" => "dbname",
+        ],
+    ],
 ];
 ```
 
@@ -124,6 +89,53 @@ create autoload.php with this contents:
 return [
     "myTestApp\\app\\" => __DIR__ . '/app'
 ];
+```
+
+create app folder:
+```
+mkdir app
+cd app
+```
+
+create Application.php with this contents:
+```
+namespace myTestApp\app;
+
+use Targoman\Framework\core\Application as BaseApplication;
+
+class Application extends BaseApplication {
+    public $myParamA;
+
+    public function run() {
+        // put your code here
+
+        echo $this->myParamA;
+
+        // use $this->db for accessing db defined in component section of config files
+
+        // $this->db->selectAll(...)
+
+        return 0; //exit code
+    }
+}
+```
+
+create Runner.php
+```
+<?php
+defined('FW_DEBUG') or define('FW_DEBUG', true);
+defined('FW_ENV_DEV') or define('FW_ENV_DEV', true);
+
+require(__DIR__ . "/../vendor/autoload.php");
+require(__DIR__ . "/../vendor/targoman/php-micro-framework/src/TargomanFramework.php");
+
+$config = array_replace_recursive(
+    require(__DIR__ . "/config/App.conf.php"),
+    require(__DIR__ . "/config/params.php"),
+    @require(__DIR__ . "/config/params-local.php")
+);
+
+exit((new \myTestApp\app\Application($config))->run());
 ```
 
 run:
