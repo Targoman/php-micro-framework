@@ -28,7 +28,7 @@ create .gitignore file with this contents:
 composer.lock
 ```
 
-create app folder under root and cd to it:
+create app folder:
 ```
 mkdir app
 cd app
@@ -41,8 +41,14 @@ namespace myTestApp\app;
 use Targoman\Framework\core\Application as BaseApplication;
 
 class Application extends BaseApplication {
+    public $myParamA;
+
     public function run() {
         // put your code here
+
+        echo $this->myParamA;
+
+        return 0; //exit code
     }
 }
 ```
@@ -65,7 +71,7 @@ $config = array_replace_recursive(
 exit((new \myTestApp\app\Application($config))->run());
 ```
 
-create config folder under root and cd to it:
+create config folder:
 ```
 cd ..
 mkdir config
@@ -77,6 +83,7 @@ create App.conf.php with this contents:
 <?php
 return [
     "app" => [
+        "myParamA" => "original value",
     ],
     "components" => [
         "db" => [
@@ -91,6 +98,7 @@ create params.php with this contents:
 <?php
 return [
     "app" => [
+        "myParamA" => "override original value",
     ],
 ];
 ```
@@ -100,6 +108,7 @@ create params-local.php with this contents:
 <?php
 return [
     "app" => [
+        "myParamA" => "override original value for my local use value",
     ],
 ];
 ```
