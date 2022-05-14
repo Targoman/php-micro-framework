@@ -7,7 +7,8 @@ namespace Targoman\Framework\db;
 
 use PDO;
 
-class MySql {
+class MySql
+{
     use \Targoman\Framework\core\ComponentTrait;
 
     public $host = "127.0.0.1";
