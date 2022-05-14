@@ -14,8 +14,10 @@ class Components extends BaseObject {
 
     public function __construct(&$_config) {
 
+        $this->components = $this->coreComponents();
+
         if (isset($_config["components"])) {
-            $this->components = $_config["components"];
+            $this->components = array_replace_recursive($this->components, $_config["components"]);
             unset($_config["components"]);
         }
 
@@ -37,5 +39,9 @@ class Components extends BaseObject {
         }
 
         return parent::__get($name);
+    }
+
+    public function coreComponents() : Array {
+        return [];
     }
 }

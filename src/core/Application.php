@@ -25,9 +25,18 @@ class Application extends Components {
         }
 
         if (empty($_config) == false)
-            throw new \Exception("unknown confif items found: " . implode(', ', array_keys($_config)));
+            throw new \Exception("unknown config items found: " . implode(', ', array_keys($_config)));
     }
 
     public function run() { throw new \Exception("Application::run not implemented."); }
+
+    //override
+    public function coreComponents() : Array {
+        return [
+            "logger" => [
+                "class" => "Targoman\\Framework\\logger\\Logger",
+            ],
+        ];
+    }
 
 }
