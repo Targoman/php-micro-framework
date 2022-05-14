@@ -5,7 +5,8 @@
 
 namespace Targoman\Framework\db;
 
-class Command {
+class Command
+{
     public $db;
     public $qry;
     public $params=[];
